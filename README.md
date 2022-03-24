@@ -1,5 +1,5 @@
-Projeto de: Alain Delon Machado da Cunha
-email: alaindelonm@gmail.com
+- Projeto de: Alain Delon Machado da Cunha
+- email: alaindelonm@gmail.com
 
 # Cadastro - API
 
