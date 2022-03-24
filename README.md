@@ -5,10 +5,10 @@ Cadastro é uma Django api para cadastro de pessoas.
 ## Description
 
 As informações cadastradas podem ser consultadas através do endpoint:
-- /pessoas 
+- /pessoas/
 
 O utilizador poderá cadastrar pessoas fornecendo login, senha e data de nascimento no seguinte endpoint:
-- /pessoas/new
+- /pessoas/new/
 
 ## Instalação
 

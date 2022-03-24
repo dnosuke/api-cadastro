@@ -4,7 +4,7 @@ from .models import Pessoa
 import random
 
 # Create your views here.
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def pessoas_view(request):
     if request.method == 'GET':
         pessoas = Pessoa.objects.all()
@@ -15,29 +15,28 @@ def pessoas_view(request):
         }for cadastro in pessoas]
         return Response(output)
 
+def generate_random_password (length):
+    characters = ('abcdefghijklmnopqrstuvxyz')
+    random_password = ''
+    for x in range(length):
+        random_password+= random.choice(characters)
+    return random_password   
 
-@api_view(['GET','POST'])
-def nova_pessoa_view(request):
+@api_view(['POST'])
+def new_pessoa_view(request):
     if request.method == 'POST':
+        login=request.data.get('login')
+        requested_password = request.data.get('senha')
+        date = request.data.get('data')
+
+        password = requested_password if requested_password != '' else generate_random_password(10)
+
+        pessoa = Pessoa.objects.create(login=login,
+            senha=password, data=date)
         
-        senha2 = request.data.get('senha')
-
-        if senha2 == '':
-            caracteres = ('abcdefghijklmnopqrstuvxyz')
-            lenght = 10
-            for x in range(lenght):
-                senha2 += random.choice(caracteres)
-
-            pessoa = Pessoa.objects.create(login=request.data.get('login'),
-            senha=senha2, data=request.data.get('data'))
-        else:
-            pessoa = Pessoa.objects.create(login=request.data.get('login'),senha=request.data.get('senha'), data=request.data.get('data'))
-        
-
-        output = {
-            'senha': pessoa.senha,
+        return Response({
             'login': pessoa.login,
+            'senha': pessoa.senha,
             'data': pessoa.data
-        }
-        return Response(output)
+        })
     return Response(request.data)
