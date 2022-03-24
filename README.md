@@ -1,3 +1,6 @@
+- Projeto de: Alain Delon Machado da Cunha
+- email: alaindelonm@gmail.com
+
 # Cadastro - API
 
 Cadastro é uma Django api para cadastro de pessoas.
