@@ -34,6 +34,5 @@ pip install -r requirements.txt
 >> python manage.py runserver
 
 ```
-
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
